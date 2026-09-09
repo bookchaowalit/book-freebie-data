@@ -1,0 +1,23 @@
+{
+  "id": "jetbrains-student-pack",
+  "product": "book-freebie-data",
+  "domain": "freebie",
+  "schema_version": "freebie.v2",
+  "fetch_url": "https://sales.jetbrains.com/api/v2/help_center/en-gb/articles/207241195.json",
+  "source_url": "https://sales.jetbrains.com/hc/en-gb/articles/207241195-Do-you-offer-free-educational-licenses-for-students-and-teachers",
+  "access": "jetbrains-api",
+  "content_type": "application/json",
+  "category": "software-license",
+  "record_kind": "program",
+  "provider": "JetBrains",
+  "article_id": 207241195,
+  "expected_article_title": "Do you offer free educational licenses for students and teachers?",
+  "enabled": true,
+  "permission_status": "reviewed-public-read",
+  "reviewed_at": "2026-09-07",
+  "permission_evidence": "https://sales.jetbrains.com/api/v2/help_center/en-gb/articles/207241195.json",
+  "owner": "bookchaowalit",
+  "min_interval_seconds": 21600,
+  "retention": "private local raw archive; operational retention; no automatic deletion",
+  "use": "public program metadata for personal discovery; no source-body republication"
+}

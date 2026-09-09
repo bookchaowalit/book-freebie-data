@@ -1,0 +1,42 @@
+{
+  "id": "usps-free-shipping-supplies",
+  "product": "book-freebie-data",
+  "domain": "freebie",
+  "schema_version": "freebie.v2",
+  "fetch_url": "https://store.usps.com/store/shipping-supplies/",
+  "source_url": "https://store.usps.com/store/shipping-supplies/",
+  "access": "html",
+  "content_type": "text/html",
+  "category": "physical-sample",
+  "provider": "USPS",
+  "title": "USPS shipping supplies",
+  "required_markers": [
+    "shipping supplies",
+    "usps"
+  ],
+  "generic_html": true,
+  "eligible_countries": [
+    "US"
+  ],
+  "eligibility_text": "USPS shipping-supply catalogue; product availability, address and order limits apply.",
+  "value_kind": "in_kind",
+  "value_amount": null,
+  "value_currency": null,
+  "value_guaranteed": null,
+  "cost_notes": "The adapter records only public programme metadata. Confirm current eligibility, price, availability and terms at the official source.",
+  "normalized_terms": {
+    "delivery_kind": "physical",
+    "stock_rule": "Supply availability and order limits are controlled by USPS.",
+    "redemption_steps": "Order eligible supplies through the official USPS store and confirm delivery terms.",
+    "shipping_cost_known": null
+  },
+  "enabled": true,
+  "permission_status": "reviewed-public-read",
+  "reviewed_at": "2026-09-08",
+  "permission_evidence": "https://store.usps.com/store/shipping-supplies/",
+  "owner": "bookchaowalit",
+  "min_interval_seconds": 21600,
+  "retention": "private local raw archive; operational retention; no automatic deletion",
+  "use": "public freebie metadata for personal discovery; no source-body republication",
+  "record_kind": "program"
+}

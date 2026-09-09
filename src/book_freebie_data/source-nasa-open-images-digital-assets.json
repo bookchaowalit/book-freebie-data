@@ -1,0 +1,42 @@
+{
+  "id": "nasa-open-images-digital-assets",
+  "product": "book-freebie-data",
+  "domain": "freebie",
+  "schema_version": "freebie.v2",
+  "fetch_url": "https://www.nasa.gov/images/",
+  "source_url": "https://www.nasa.gov/images/",
+  "access": "html",
+  "content_type": "text/html",
+  "category": "digital-asset",
+  "provider": "NASA",
+  "title": "NASA public images",
+  "required_markers": [
+    "nasa",
+    "images"
+  ],
+  "generic_html": true,
+  "eligible_countries": [
+    "GLOBAL"
+  ],
+  "eligibility_text": "NASA public image and media resources; asset-specific copyright, credit and usage conditions apply.",
+  "value_kind": "access",
+  "value_amount": null,
+  "value_currency": null,
+  "value_guaranteed": null,
+  "cost_notes": "The adapter records only public programme metadata. Confirm current eligibility, price, availability and terms at the official source.",
+  "normalized_terms": {
+    "delivery_kind": "digital",
+    "stock_rule": "Digital availability follows the current NASA image and media pages.",
+    "redemption_steps": "Access the official NASA image page and review the stated media-use guidance for each asset.",
+    "shipping_cost_known": false
+  },
+  "enabled": true,
+  "permission_status": "reviewed-public-read",
+  "reviewed_at": "2026-09-08",
+  "permission_evidence": "https://www.nasa.gov/robots.txt",
+  "owner": "bookchaowalit",
+  "min_interval_seconds": 21600,
+  "retention": "private local raw archive; operational retention; no automatic deletion",
+  "use": "public freebie metadata for personal discovery; no source-body republication",
+  "record_kind": "program"
+}

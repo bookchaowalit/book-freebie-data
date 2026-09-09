@@ -1,0 +1,21 @@
+{
+  "id": "github-student-benefits",
+  "product": "book-freebie-data",
+  "domain": "freebie",
+  "schema_version": "freebie.v2",
+  "fetch_url": "https://api.github.com/repos/github/docs/contents/content/education/about-github-education/github-education-for-students/about-github-education-for-students.md",
+  "source_url": "https://docs.github.com/en/education/about-github-education/github-education-for-students/about-github-education-for-students",
+  "access": "github-api",
+  "content_type": "application/json",
+  "category": "software-license",
+  "record_kind": "program",
+  "provider": "GitHub",
+  "enabled": true,
+  "permission_status": "reviewed-public-read",
+  "reviewed_at": "2026-09-07",
+  "permission_evidence": "https://github.com/github/docs/blob/main/LICENSE",
+  "owner": "bookchaowalit",
+  "min_interval_seconds": 21600,
+  "retention": "private local raw archive; operational retention; no automatic deletion",
+  "use": "public program metadata for personal discovery; no source-body republication"
+}

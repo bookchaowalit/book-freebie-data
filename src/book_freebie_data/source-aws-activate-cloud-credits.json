@@ -1,0 +1,42 @@
+{
+  "id": "aws-activate-cloud-credits",
+  "product": "book-freebie-data",
+  "domain": "freebie",
+  "schema_version": "freebie.v2",
+  "fetch_url": "https://aws.amazon.com/startups/credits/",
+  "source_url": "https://aws.amazon.com/startups/credits/",
+  "access": "html",
+  "content_type": "text/html",
+  "category": "cloud-credit",
+  "provider": "AWS Startups",
+  "title": "AWS Activate cloud credits",
+  "required_markers": [
+    "aws activate credits",
+    "promotional credits"
+  ],
+  "generic_html": true,
+  "eligible_countries": [
+    "GLOBAL"
+  ],
+  "eligibility_text": "AWS Activate promotional cloud credits for eligible startups; account, stage and provider conditions apply.",
+  "value_kind": "credit",
+  "value_amount": null,
+  "value_currency": null,
+  "value_guaranteed": null,
+  "cost_notes": "The adapter records only public programme metadata. Confirm current eligibility, price, availability and terms at the official source.",
+  "normalized_terms": {
+    "delivery_kind": "credit",
+    "stock_rule": "Credit amount and availability depend on the current AWS Activate tier and eligibility.",
+    "redemption_steps": "Apply through the official AWS Activate flow and follow account and provider verification steps.",
+    "shipping_cost_known": null
+  },
+  "enabled": true,
+  "permission_status": "reviewed-public-read",
+  "reviewed_at": "2026-09-08",
+  "permission_evidence": "https://aws.amazon.com/robots.txt",
+  "owner": "bookchaowalit",
+  "min_interval_seconds": 21600,
+  "retention": "private local raw archive; operational retention; no automatic deletion",
+  "use": "public freebie metadata for personal discovery; no source-body republication",
+  "record_kind": "program"
+}

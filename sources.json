@@ -1,0 +1,17 @@
+{
+  "domain": "freebie",
+  "enabled_sources": [
+    "github-student-benefits",
+    "jetbrains-student-pack",
+    "aws-activate-cloud-credits",
+    "google-maps-platform-api-credit",
+    "usps-free-shipping-supplies",
+    "nasa-open-images-digital-assets",
+    "national-geographic-photo-contests"
+  ],
+  "enabled_category_capabilities": ["software-license", "cloud-credit", "api-credit", "physical-sample", "digital-asset", "giveaway"],
+  "network_enabled": true,
+  "permission_status": "reviewed-public-read",
+  "policy_file": "src/book_freebie_data/source.json",
+  "notes": "Seven manually invoked official sources. Six-hour minimum interval. No schedule or remote writes."
+}

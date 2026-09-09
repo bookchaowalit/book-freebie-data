@@ -1,0 +1,42 @@
+{
+  "id": "google-maps-platform-api-credit",
+  "product": "book-freebie-data",
+  "domain": "freebie",
+  "schema_version": "freebie.v2",
+  "fetch_url": "https://mapsplatform.google.com/pricing/",
+  "source_url": "https://mapsplatform.google.com/pricing/",
+  "access": "html",
+  "content_type": "text/html",
+  "category": "api-credit",
+  "provider": "Google Maps Platform",
+  "title": "Google Maps Platform monthly credit",
+  "required_markers": [
+    "google maps platform",
+    "credit"
+  ],
+  "generic_html": true,
+  "eligible_countries": [
+    "GLOBAL"
+  ],
+  "eligibility_text": "Google Maps Platform pricing page; billing account, API usage and current credit terms apply.",
+  "value_kind": "credit",
+  "value_amount": null,
+  "value_currency": null,
+  "value_guaranteed": null,
+  "cost_notes": "The adapter records only public programme metadata. Confirm current eligibility, price, availability and terms at the official source.",
+  "normalized_terms": {
+    "delivery_kind": "credit",
+    "stock_rule": "Monthly credit and eligible services follow the current Google Maps Platform pricing terms.",
+    "redemption_steps": "Create or use a Google Cloud billing account and follow the current Maps Platform setup.",
+    "shipping_cost_known": null
+  },
+  "enabled": true,
+  "permission_status": "reviewed-public-read",
+  "reviewed_at": "2026-09-08",
+  "permission_evidence": "https://mapsplatform.google.com/robots.txt",
+  "owner": "bookchaowalit",
+  "min_interval_seconds": 21600,
+  "retention": "private local raw archive; operational retention; no automatic deletion",
+  "use": "public freebie metadata for personal discovery; no source-body republication",
+  "record_kind": "program"
+}
