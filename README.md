@@ -25,7 +25,8 @@ than copying the same award into several products.
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -e .
-book-freebie-data contract
+book-freebie-data contract              # v1 (demo)
+book-freebie-data contract --version v2 # v2 (captured records)
 book-freebie-data demo --open-only
 book-freebie-data demo --query "software-license"
 book-freebie-data validate src/book_freebie_data/demo.json
