@@ -30,7 +30,13 @@ book-freebie-data demo --open-only
 book-freebie-data demo --query "software-license"
 book-freebie-data validate src/book_freebie_data/demo.json
 python -m unittest discover -s tests -v
+python -m pip install -e ".[dev]"  # pytest + pinned ruff
+ruff check . && python -m pytest -q
 ```
+
+CI (`.github/workflows/ci.yml`) runs `ruff check`, the offline test suite and a
+CLI smoke test on Python 3.10 and 3.13. `tests/test_registry.py` keeps
+`sources.json`, the packaged `source*.json` configs and the contract in sync.
 
 With dependencies already available, use `PYTHONPATH=src python3 -m book_freebie_data`.
 `demo` uses the fixed synthetic clock 2026-09-07T00:00:00Z unless `--as-of` is
