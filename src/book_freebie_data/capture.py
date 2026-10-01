@@ -1,13 +1,13 @@
 """One explicit official source; all unsupported facts remain unknown."""
-import base64
 import argparse
+import base64
 import json
 import os
 import re
 import sys
-from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
+
 from .cli import resource, validate
 
 
@@ -15,9 +15,9 @@ class Text(HTMLParser):
     def __init__(self):
         super().__init__(); self.parts=[]; self.hidden=0
     def handle_starttag(self, tag, attrs):
-        if tag in {'script','style'}: self.hidden += 1
+        if tag in {'script','style','noscript','svg'}: self.hidden += 1
     def handle_endtag(self, tag):
-        if tag in {'script','style'}: self.hidden = max(0,self.hidden-1)
+        if tag in {'script','style','noscript','svg'}: self.hidden = max(0,self.hidden-1)
     def handle_data(self, value):
         if not self.hidden: self.parts.append(value)
 
@@ -66,17 +66,10 @@ def normalize(raw, source, checked_at):
     deadline={'kind':'unknown','at':None}
     status='unknown'
     countries=[]
-    if source['access']=='govuk-api':
+    if source['access']=='github-api':
         body=json.loads(raw)
-        if body.get('base_path') != source['source_url'].removeprefix('https://www.gov.uk') or not isinstance(body.get('details'),dict):
-            raise ValueError('unexpected GOV.UK document')
-        title=body.get('title')
-        expected={'grant':'Apply for innovation funding','benefit':'Universal Credit'}[source['domain']]
-        if title != expected: raise ValueError('source title drift')
-        eligibility='UK program; read current eligibility and residence or organization requirements at the official source.'
-        if source['domain']=='benefit': terms['jurisdiction']='United Kingdom'
-    elif source['access']=='github-api':
-        body=json.loads(raw)
+        if not isinstance(body,dict):
+            raise ValueError('unexpected GitHub content')
         if body.get('encoding')!='base64' or body.get('name')!='about-github-education-for-students.md':
             raise ValueError('unexpected GitHub content')
         text=base64.b64decode(''.join(body['content'].split()),validate=True).decode('utf-8')
@@ -87,7 +80,7 @@ def normalize(raw, source, checked_at):
         eligibility='Student verification and current GitHub Education requirements apply; partner offers have separate terms.'
     elif source['access']=='jetbrains-api':
         body=json.loads(raw)
-        article=body.get('article')
+        article=body.get('article') if isinstance(body,dict) else None
         if not isinstance(article,dict) or article.get('id') != source.get('article_id'):
             raise ValueError('unexpected JetBrains Help Center article')
         if article.get('draft') is not False or article.get('locale') != 'en-gb':
@@ -105,20 +98,7 @@ def normalize(raw, source, checked_at):
         terms['redemption_steps']='Apply through JetBrains education flow; current verification and account steps must be confirmed at the linked official page.'
         eligibility='Students and teachers can request a free JetBrains Student or Teacher Pack; educational licenses cannot be used for commercial work. Verify the current program requirements.'
     else:
-        parser=Text(); parser.feed(raw.decode('utf-8'))
-        text=' '.join(' '.join(parser.parts).split())
-        if 'Chevening in Thailand' not in text:
-            raise ValueError('Chevening source drift or challenge page')
-        title='Chevening in Thailand'
-        countries=['TH']
-        terms['study_level']='postgraduate'
-        eligibility='Thailand program; nationality alone does not establish eligibility. Verify all Chevening requirements.'
-        match=re.search(r'Open for applications until (\d{1,2} [A-Za-z]+ \d{4}), at (\d{2}:\d{2}) \(UTC\)',text)
-        if match:
-            cutoff=datetime.strptime(match[1]+' '+match[2],'%d %B %Y %H:%M').replace(tzinfo=timezone.utc)
-            deadline={'kind':'fixed','at':cutoff.isoformat().replace('+00:00','Z')}
-            status='open' if cutoff > datetime.fromisoformat(checked_at.replace('Z','+00:00')) else 'closed'
-        elif re.search(r'Applications (?:are |have )?closed',text,re.I): status='closed'
+        raise ValueError('unknown freebie source')
     record_id=source['id']+(':'+deadline['at'][:10] if deadline['kind']=='fixed' else '')
     item={'id':record_id,'title':title,'record_kind':source['record_kind'],'category':source['category'],'source_url':source['source_url'],'provider':source['provider'],'status':status,'deadline':deadline,'eligible_countries':countries,'eligibility_text':eligibility,'value':{'kind':'access' if source['domain']=='freebie' else 'unknown','amount':None,'currency':None,'guaranteed':None},'cost':{'fee_amount':None,'currency':None,'auto_renewal':None,'notes':'Not extracted; review official terms before applying or claiming.'},'terms':terms,'related_records':[],'provenance':{'evidence_kind':'captured','source_id':source['id'],'source_record_id':record_id,'checked_at':checked_at,'raw_object_key':None,'bronze_manifest_key':None}}
     return {'schema_version':source['schema_version'],'source':source['product'],'retrieved_at':checked_at,'data_status':'live','items':[item]}
@@ -151,7 +131,7 @@ def main(argv=None):
         print('Shared discovery runtime is unavailable.',file=sys.stderr)
         return 2
     sys.path.insert(0,str(runtime))
-    from discovery.capture_runtime import run, VERSION
+    from discovery.capture_runtime import VERSION, run
     if VERSION != 1: raise RuntimeError('unsupported shared capture runtime')
     return run(source_config(selected.source_id),normalize,validate,remaining)
 

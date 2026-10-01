@@ -1,6 +1,7 @@
 import base64
 import json
 import unittest
+
 from book_freebie_data.capture import normalize
 from book_freebie_data.cli import resource, validate
 

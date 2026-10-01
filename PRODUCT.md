@@ -24,7 +24,7 @@ description: Outcome, consumers, ownership, contract, quality, privacy, and oper
 
 - Decision or user outcome: Find zero-price offers with redemption and hidden-cost terms.
 - Consumers and use cases: Discovery applications; integration planned.
-- Source systems and lake layers: Two reviewed public sources → landing → Bronze through the shared local runtime.
+- Source systems and lake layers: Seven reviewed public sources → landing → Bronze through the shared local runtime.
 - In scope/out of scope: Standalone free claims including credits; purchase-required discounts go to deal, catalog free tiers remain free:find.
 - Freshness, availability, and volume expectation: Target source review every 24h; open filter rejects checks older than 72h; no live SLA.
 - Data classification, residency, retention, and access: Public program metadata; no user profile; raw source bytes remain in the private local operational archive.
